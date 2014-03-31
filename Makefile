@@ -59,6 +59,8 @@ post-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/${ETCDIR}
 	${INSTALL_DATA} ${WRKSRC}/modsecurity.conf-recommended \
 		${STAGEDIR}${PREFIX}/${ETCDIR}/modsecurity.conf.sample
+	${INSTALL_DATA} ${WRKSRC}/unicode.mapping \
+		${STAGEDIR}${PREFIX}/${ETCDIR}/unicode.mapping
 
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	(cd ${WRKSRC} && ${COPYTREE_SHARE} "doc" ${STAGEDIR}${DOCSDIR})

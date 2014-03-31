@@ -1,5 +1,6 @@
 bin/rules-updater.pl
 %%ETCDIR%%/modsecurity.conf.sample
+%%ETCDIR%%/unicode.mapping
 lib/mod_security2.so
 %%APACHEMODDIR%%/mod_security2.so
 @dirrmtry %%ETCDIR%%
