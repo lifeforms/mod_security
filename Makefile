@@ -19,7 +19,6 @@ USE_APACHE=	22+
 USE_GNOME=	libxml2
 GNU_CONFIGURE=	yes
 
-AP_GENPLIST=	yes
 AP_INC=	${LOCALBASE}/include/libxml2
 AP_LIB=	${LOCALBASE}/lib
 MODULENAME=	mod_security2
@@ -31,12 +30,8 @@ DOCSDIR=	${PREFIX}/share/doc/${MODULENAME}
 SUB_FILES+=	mod_security2.conf
 SUB_LIST+=	APACHEETCDIR="${APACHEETCDIR}"
 
-PLIST_FILES=	etc/modsecurity.conf-example \
-		${APACHEMODDIR}/mod_security2.so \
-		bin/rules-updater.pl \
-		lib/mod_security2.so
-
 OPTIONS_DEFINE=	LUA MLOGC
+OPTIONS_SUB=yes
 
 LUA_CONFIGURE_ON=	--with-lua=${LOCALBASE}
 LUA_CONFIGURE_OFF+=	--without-lua
@@ -46,7 +41,6 @@ MLOGC_DESC=		Build ModSecurity Log Collector
 MLOGC_CONFIGURE_ON=	--with-curl=${LOCALBASE} --disable-errors
 MLOGC_CONFIGURE_OFF=	--disable-mlogc
 MLOGC_LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl
-MLOGC_PLIST_FILES=	bin/mlogc bin/mlogc-batch-load.pl
 
 # ap2x- prefix OPTIONSFILE fix
 OPTIONSFILE=	${PORT_DBDIR}/www_mod_security/options

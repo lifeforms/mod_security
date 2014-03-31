@@ -1,0 +1,6 @@
+etc/modsecurity.conf-example
+%%APACHEMODDIR%%/mod_security2.so
+bin/rules-updater.pl
+lib/mod_security2.so
+%%MLOGC%%bin/mlogc
+%%MLOGC%%bin/mlogc-batch-load.pl
