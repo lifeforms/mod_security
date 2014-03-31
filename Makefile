@@ -55,7 +55,7 @@ pre-install:
 
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/modsecurity.conf-recommended \
-		${STAGEDIR}${PREFIX}/etc/modsecurity.conf-example
+		${STAGEDIR}${PREFIX}/etc/modsecurity.conf.sample
 
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	(cd ${WRKSRC} && ${COPYTREE_SHARE} "doc" ${STAGEDIR}${DOCSDIR})

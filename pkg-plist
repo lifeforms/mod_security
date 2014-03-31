@@ -1,5 +1,5 @@
 bin/rules-updater.pl
-etc/modsecurity.conf-example
+etc/modsecurity.conf.sample
 lib/mod_security2.so
 %%APACHEMODDIR%%/mod_security2.so
 %%MLOGC%%bin/mlogc
