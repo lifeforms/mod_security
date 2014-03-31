@@ -1,8 +1,8 @@
 bin/rules-updater.pl
-%%ETCDIR%%/modsecurity.conf.sample
-%%ETCDIR%%/unicode.mapping
 lib/mod_security2.so
 %%APACHEMODDIR%%/mod_security2.so
+%%ETCDIR%%/modsecurity.conf.sample
+%%ETCDIR%%/unicode.mapping
 @dirrmtry %%ETCDIR%%
 %%MLOGC%%bin/mlogc
 %%MLOGC%%bin/mlogc-batch-load.pl
