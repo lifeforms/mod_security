@@ -1,7 +1,9 @@
 bin/rules-updater.pl
 lib/mod_security2.so
 %%APACHEMODDIR%%/mod_security2.so
+@unexec if cmp -s %D/etc/modsecurity/modsecurity.conf.sample %D/etc/modsecurity/modsecurity.conf; then rm -f %D/etc/modsecurity/modsecurity.conf; fi
 %%ETCDIR%%/modsecurity.conf.sample
+@exec if [ ! -f %D/etc/modsecurity/modsecurity.conf ] ; then cp -p %D/%F %B/modsecurity.conf; fi
 %%ETCDIR%%/unicode.mapping
 @dirrmtry %%ETCDIR%%
 %%MLOGC%%bin/mlogc
