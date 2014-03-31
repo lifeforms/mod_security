@@ -37,7 +37,7 @@ Starting ModSecurity
 When the configuration is all set, simply restart Apache and confirm
 that ModSecurity is loaded by checking Apache's log file:
 
-  service apache22 restart
+  apachectl restart
   tail /var/log/httpd-error.log
 
 Configuring blocking mode
