@@ -42,6 +42,8 @@ MLOGC_CONFIGURE_ON=	--with-curl=${LOCALBASE} --disable-errors
 MLOGC_CONFIGURE_OFF=	--disable-mlogc
 MLOGC_LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl
 
+ETCDIR=etc/modsecurity
+
 # ap2x- prefix OPTIONSFILE fix
 OPTIONSFILE=	${PORT_DBDIR}/www_mod_security/options
 .include <bsd.port.options.mk>
@@ -54,8 +56,9 @@ pre-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/${APACHEMODDIR}
 
 post-install:
+	@${MKDIR} ${STAGEDIR}${PREFIX}/${ETCDIR}
 	${INSTALL_DATA} ${WRKSRC}/modsecurity.conf-recommended \
-		${STAGEDIR}${PREFIX}/etc/modsecurity.conf.sample
+		${STAGEDIR}${PREFIX}/${ETCDIR}/modsecurity.conf.sample
 
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	(cd ${WRKSRC} && ${COPYTREE_SHARE} "doc" ${STAGEDIR}${DOCSDIR})
