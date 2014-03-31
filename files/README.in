@@ -78,5 +78,6 @@ exceptions.
 You probably want to keep the CRS updated from time to time. You can
 do this with Git:
 
-cd /usr/local/etc/modsecurity/owasp-modsecurity-crs
-git pull
+  cd /usr/local/etc/modsecurity/owasp-modsecurity-crs
+  git pull
+  apachectl restart
