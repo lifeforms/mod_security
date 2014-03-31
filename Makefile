@@ -66,5 +66,6 @@ post-install:
 
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	(cd ${WRKSRC} && ${COPYTREE_SHARE} "doc" ${STAGEDIR}${DOCSDIR})
+	${INSTALL_DATA} ${FILESDIR}/README ${STAGEDIR}${DOCSDIR}/
 
 .include <bsd.port.mk>
