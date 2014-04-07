@@ -20,6 +20,10 @@ USE_APACHE=	22+
 USE_GNOME=	libxml2
 GNU_CONFIGURE=	yes
 
+USES=           shebangfix
+SHEBANG_FILES=tools/rules-updater.pl.in
+perl_OLD_CMD =@PERL@
+
 AP_INC=	${LOCALBASE}/include/libxml2
 AP_LIB=	${LOCALBASE}/lib
 MODULENAME=	mod_security2
