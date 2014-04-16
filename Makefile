@@ -20,7 +20,7 @@ USE_GNOME=	libxml2
 GNU_CONFIGURE=	yes
 
 USES=           shebangfix
-SHEBANG_FILES=tools/rules-updater.pl.in
+SHEBANG_FILES=tools/rules-updater.pl.in mlogc/mlogc-batch-load.pl.in
 perl_OLD_CMD =@PERL@
 
 AP_INC=	${LOCALBASE}/include/libxml2
