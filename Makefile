@@ -1,12 +1,11 @@
 # $FreeBSD: head/www/mod_security/Makefile 343295 2014-02-07 20:23:14Z ohauer $
 
 PORTNAME=	mod_security
-PORTVERSION=	2.7.7
-PORTREVISION=	1
+PORTVERSION=	2.8.0
 CATEGORIES=	www security
 MASTER_SITES=	http://www.modsecurity.org/tarball/${PORTVERSION}/
 PKGNAMEPREFIX=	${APACHE_PKGNAMEPREFIX}
-DISTNAME=	${PORTNAME:S/_//:S/2//}-apache_${PORTVERSION}
+DISTNAME=	${PORTNAME:S/_//:S/2//}-${PORTVERSION}
 
 MAINTAINER=	walter@lifeforms.nl
 COMMENT=	Intrusion detection and prevention engine
@@ -21,7 +20,7 @@ USE_GNOME=	libxml2
 GNU_CONFIGURE=	yes
 
 USES=           shebangfix
-SHEBANG_FILES=tools/rules-updater.pl.in
+SHEBANG_FILES=tools/rules-updater.pl.in mlogc/mlogc-batch-load.pl.in
 perl_OLD_CMD =@PERL@
 
 AP_INC=	${LOCALBASE}/include/libxml2
@@ -37,6 +36,9 @@ SUB_FILES+= pkg-message
 SUB_FILES+= README
 SUB_LIST+=	APACHEETCDIR="${APACHEETCDIR}"
 SUB_LIST+=	APACHEMODDIR="${APACHEMODDIR}"
+
+PLIST_SUB+=	APXS="${APXS}"
+PLIST_SUB+=	APACHEMODDIR="${APACHEMODDIR}"
 
 OPTIONS_DEFINE=	LUA MLOGC
 OPTIONS_SUB=yes

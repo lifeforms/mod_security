@@ -1,6 +1,7 @@
 bin/rules-updater.pl
 lib/mod_security2.so
 %%APACHEMODDIR%%/mod_security2.so
+@exec %%APXS%% -e -n unique_id -a %%APACHEMODDIR%%/mod_unique_id.so
 @unexec if cmp -s %D/etc/modsecurity/modsecurity.conf.sample %D/etc/modsecurity/modsecurity.conf; then rm -f %D/etc/modsecurity/modsecurity.conf; fi
 %%ETCDIR%%/modsecurity.conf.sample
 @exec if [ ! -f %D/etc/modsecurity/modsecurity.conf ] ; then cp -p %D/%F %B/modsecurity.conf; fi
