@@ -41,7 +41,7 @@ SUB_LIST+=	APACHEMODDIR="${APACHEMODDIR}"
 PLIST_SUB+=	APXS="${APXS}"
 PLIST_SUB+=	APACHEMODDIR="${APACHEMODDIR}"
 
-OPTIONS_DEFINE=	LUA MLOGC
+OPTIONS_DEFINE=	LUA MLOGC FUZZYHASH
 OPTIONS_SUB=yes
 
 LUA_CONFIGURE_ON=	--with-lua=${LOCALBASE}
@@ -51,6 +51,11 @@ LUA_USES=		lua:51
 MLOGC_DESC=		Build ModSecurity Log Collector
 MLOGC_CONFIGURE_ON=	--disable-errors
 MLOGC_CONFIGURE_OFF=	--disable-mlogc
+
+FUZZYHASH_DESC=	Allow matching contents using fuzzy hashes with ssdeep
+FUZZYHASH_CONFIGURE_ON=		--with-ssdeep=${LOCALBASE}
+FUZZYHASH_CONFIGURE_OFF=	--without-ssdeep
+FUZZYHASH_LIB_DEPENDS=		libfuzzy.so:${PORTSDIR}/security/ssdeep
 
 ETCDIR=etc/modsecurity
 
