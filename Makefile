@@ -14,7 +14,8 @@ LICENSE=	APACHE20
 
 LIB_DEPENDS+=	libpcre.so:${PORTSDIR}/devel/pcre \
 		libapr-1.so:${PORTSDIR}/devel/apr1 \
-		libyajl.so:${PORTSDIR}/devel/yajl
+		libyajl.so:${PORTSDIR}/devel/yajl \
+		libcurl.so:${PORTSDIR}/ftp/curl
 
 USE_APACHE=	22+
 USE_GNOME=	libxml2
@@ -48,9 +49,8 @@ LUA_CONFIGURE_OFF+=	--without-lua
 LUA_USES=		lua:51
 
 MLOGC_DESC=		Build ModSecurity Log Collector
-MLOGC_CONFIGURE_ON=	--with-curl=${LOCALBASE} --disable-errors
+MLOGC_CONFIGURE_ON=	--disable-errors
 MLOGC_CONFIGURE_OFF=	--disable-mlogc
-MLOGC_LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl
 
 ETCDIR=etc/modsecurity
 
@@ -60,7 +60,7 @@ OPTIONSFILE=	${PORT_DBDIR}/www_mod_security/options
 
 REINPLACE_ARGS=	-i ""
 AP_EXTRAS+=	-DWITH_LIBXML2
-CONFIGURE_ARGS+=	--with-apxs=${APXS} --with-pcre=${LOCALBASE} --with-yajl=${LOCALBASE}
+CONFIGURE_ARGS+=	--with-apxs=${APXS} --with-pcre=${LOCALBASE} --with-yajl=${LOCALBASE} --with-curl=${LOCALBASE}
 
 post-patch:
 	@${REINPLACE_CMD} -e "s/lua5.1/lua-${LUA_VER}/g" ${WRKSRC}/configure
