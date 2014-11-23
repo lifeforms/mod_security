@@ -44,7 +44,7 @@ OPTIONS_SUB=yes
 
 LUA_CONFIGURE_ON=	--with-lua=${LOCALBASE}
 LUA_CONFIGURE_OFF+=	--without-lua
-LUA_USES=		lua:51+
+LUA_USES=		lua:51
 
 MLOGC_DESC=		Build ModSecurity Log Collector
 MLOGC_CONFIGURE_ON=	--with-curl=${LOCALBASE} --disable-errors
