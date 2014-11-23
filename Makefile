@@ -13,7 +13,8 @@ COMMENT=	Intrusion detection and prevention engine
 LICENSE=	APACHE20
 
 LIB_DEPENDS+=	libpcre.so:${PORTSDIR}/devel/pcre \
-		libapr-1.so:${PORTSDIR}/devel/apr1
+		libapr-1.so:${PORTSDIR}/devel/apr1 \
+		libyajl.so:${PORTSDIR}/devel/yajl
 
 USE_APACHE=	22+
 USE_GNOME=	libxml2
@@ -59,7 +60,7 @@ OPTIONSFILE=	${PORT_DBDIR}/www_mod_security/options
 
 REINPLACE_ARGS=	-i ""
 AP_EXTRAS+=	-DWITH_LIBXML2
-CONFIGURE_ARGS+=	--with-apxs=${APXS} --with-pcre=${LOCALBASE}
+CONFIGURE_ARGS+=	--with-apxs=${APXS} --with-pcre=${LOCALBASE} --with-yajl=${LOCALBASE}
 
 post-patch:
 	@${REINPLACE_CMD} -e "s/lua5.1/lua-${LUA_VER}/g" ${WRKSRC}/configure
