@@ -3,9 +3,9 @@
 PORTNAME=	mod_security
 PORTVERSION=	2.9.0
 CATEGORIES=	www security
-MASTER_SITES=	http://www.modsecurity.org/tarball/${PORTVERSION}-rc1/
+MASTER_SITES=	http://www.modsecurity.org/tarball/${PORTVERSION}/
 PKGNAMEPREFIX=	${APACHE_PKGNAMEPREFIX}
-DISTNAME=	${PORTNAME:S/_//:S/2//}-${PORTVERSION}-RC1
+DISTNAME=	${PORTNAME:S/_//:S/2//}-${PORTVERSION}
 
 MAINTAINER=	walter@lifeforms.nl
 COMMENT=	Intrusion detection and prevention engine
