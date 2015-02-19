@@ -1,11 +1,11 @@
 # $FreeBSD: head/www/mod_security/Makefile 343295 2014-02-07 20:23:14Z ohauer $
 
 PORTNAME=	mod_security
-PORTVERSION=	2.9.0.r1
+PORTVERSION=	2.9.0
 CATEGORIES=	www security
-MASTER_SITES=	http://www.modsecurity.org/tarball/2.9.0-rc1/
+MASTER_SITES=	http://www.modsecurity.org/tarball/${PORTVERSION}-rc1/
 PKGNAMEPREFIX=	${APACHE_PKGNAMEPREFIX}
-DISTNAME=	${PORTNAME:S/_//:S/2//}-2.9.0-RC1
+DISTNAME=	${PORTNAME:S/_//:S/2//}-${PORTVERSION}-RC1
 
 MAINTAINER=	walter@lifeforms.nl
 COMMENT=	Intrusion detection and prevention engine
