@@ -20,7 +20,7 @@ LIB_DEPENDS+=	libpcre.so:${PORTSDIR}/devel/pcre \
 USE_APACHE=	22+
 USE_GNOME=	libxml2
 GNU_CONFIGURE=	yes
-USES=           perl5 shebangfix pkgconfig
+USES=	perl5 shebangfix pkgconfig
 SHEBANG_FILES=tools/rules-updater.pl.in mlogc/mlogc-batch-load.pl.in
 perl_OLD_CMD =@PERL@
 
@@ -32,8 +32,8 @@ SRC_FILE=	*.c
 PORTDOCS=	*
 DOCSDIR=	${PREFIX}/share/doc/${MODULENAME}
 
-SUB_FILES+= pkg-message
-SUB_FILES+= README
+SUB_FILES+=	pkg-message
+SUB_FILES+=	README
 SUB_LIST+=	APACHEETCDIR="${APACHEETCDIR}"
 SUB_LIST+=	APACHEMODDIR="${APACHEMODDIR}"
 
