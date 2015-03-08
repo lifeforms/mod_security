@@ -6,6 +6,5 @@ lib/mod_security2.so
 %%ETCDIR%%/modsecurity.conf.sample
 @exec if [ ! -f %D/etc/modsecurity/modsecurity.conf ] ; then cp -p %D/%F %B/modsecurity.conf; fi
 %%ETCDIR%%/unicode.mapping
-@dirrmtry %%ETCDIR%%
 %%MLOGC%%bin/mlogc
 %%MLOGC%%bin/mlogc-batch-load.pl
