@@ -6,6 +6,9 @@ To enable ModSecurity in Apache, add the following to your httpd.conf:
   LoadModule security2_module %%APACHEMODDIR%%/mod_security2.so
   Include etc/modsecurity/*.conf
 
+ModSecurity has various configuration options.
+To change them, edit modsecurity/modsecurity.conf.
+
 Getting the Core Rule Set
 -------------------------
 
@@ -20,6 +23,8 @@ under it.
   git clone https://github.com/SpiderLabs/owasp-modsecurity-crs
   cp owasp-modsecurity-crs/modsecurity_crs_10_setup.conf.example \
     crs.conf
+
+The CRS has various config options. To change them, edit crs.conf.
 
 To activate the CRS base rules, add the following to your httpd.conf:
 
