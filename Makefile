@@ -1,4 +1,4 @@
-# $FreeBSD: head/www/mod_security/Makefile 343295 2014-02-07 20:23:14Z ohauer $
+# $FreeBSD: head/www/mod_security/Makefile 394508 2015-08-17 14:20:40Z mat $
 
 PORTNAME=	mod_security
 PORTVERSION=	2.9.0
@@ -20,12 +20,12 @@ LIB_DEPENDS+=	libpcre.so:${PORTSDIR}/devel/pcre \
 USE_APACHE=	22+
 USE_GNOME=	libxml2
 GNU_CONFIGURE=	yes
-USES=	perl5 shebangfix pkgconfig
-SHEBANG_FILES=tools/rules-updater.pl.in mlogc/mlogc-batch-load.pl.in
-perl_OLD_CMD =@PERL@
+USES=		perl5 pkgconfig shebangfix
+SHEBANG_FILES=	tools/rules-updater.pl.in mlogc/mlogc-batch-load.pl.in
+perl_OLD_CMD=	@PERL@
 
-AP_INC=	${LOCALBASE}/include/libxml2
-AP_LIB=	${LOCALBASE}/lib
+AP_INC=		${LOCALBASE}/include/libxml2
+AP_LIB=		${LOCALBASE}/lib
 MODULENAME=	mod_security2
 SRC_FILE=	*.c
 
@@ -40,8 +40,8 @@ SUB_LIST+=	APACHEMODDIR="${APACHEMODDIR}"
 PLIST_SUB+=	APXS="${APXS}"
 PLIST_SUB+=	APACHEMODDIR="${APACHEMODDIR}"
 
-OPTIONS_DEFINE=	LUA MLOGC FUZZYHASH DOCS
-OPTIONS_SUB=yes
+OPTIONS_DEFINE=	DOCS FUZZYHASH LUA MLOGC
+OPTIONS_SUB=	yes
 
 LUA_CONFIGURE_ON=	--with-lua=${LOCALBASE}
 LUA_CONFIGURE_OFF+=	--without-lua
@@ -51,20 +51,16 @@ MLOGC_DESC=		Build ModSecurity Log Collector
 MLOGC_CONFIGURE_ON=	--disable-errors
 MLOGC_CONFIGURE_OFF=	--disable-mlogc
 
-FUZZYHASH_DESC=	Allow matching contents using fuzzy hashes with ssdeep
-FUZZYHASH_CONFIGURE_ON=		--with-ssdeep=${LOCALBASE}
-FUZZYHASH_CONFIGURE_OFF=	--without-ssdeep
-FUZZYHASH_LIB_DEPENDS=		libfuzzy.so:${PORTSDIR}/security/ssdeep
+FUZZYHASH_DESC=		Allow matching contents using fuzzy hashes with ssdeep
+FUZZYHASH_CONFIGURE_ON=	--with-ssdeep=${LOCALBASE}
+FUZZYHASH_CONFIGURE_OFF=--without-ssdeep
+FUZZYHASH_LIB_DEPENDS=	libfuzzy.so:${PORTSDIR}/security/ssdeep
 
-ETCDIR=etc/modsecurity
-
-# ap2x- prefix OPTIONSFILE fix
-OPTIONSFILE=	${PORT_DBDIR}/www_mod_security/options
-.include <bsd.port.options.mk>
+ETCDIR=		${PREFIX}/etc/modsecurity
 
 REINPLACE_ARGS=	-i ""
 AP_EXTRAS+=	-DWITH_LIBXML2
-CONFIGURE_ARGS+=	--with-apxs=${APXS} --with-pcre=${LOCALBASE} --with-yajl=${LOCALBASE} --with-curl=${LOCALBASE}
+CONFIGURE_ARGS+=--with-apxs=${APXS} --with-pcre=${LOCALBASE} --with-yajl=${LOCALBASE} --with-curl=${LOCALBASE}
 
 post-patch:
 	@${REINPLACE_CMD} -e "s/lua5.1/lua-${LUA_VER}/g" ${WRKSRC}/configure
@@ -73,14 +69,14 @@ pre-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/${APACHEMODDIR}
 
 post-install:
-	@${MKDIR} ${STAGEDIR}${PREFIX}/${ETCDIR}
+	@${MKDIR} ${STAGEDIR}${ETCDIR}
 	${INSTALL_DATA} ${WRKSRC}/modsecurity.conf-recommended \
-		${STAGEDIR}${PREFIX}/${ETCDIR}/modsecurity.conf.sample
+		${STAGEDIR}${ETCDIR}/modsecurity.conf.sample
 	${INSTALL_DATA} ${WRKSRC}/unicode.mapping \
-		${STAGEDIR}${PREFIX}/${ETCDIR}/unicode.mapping
+		${STAGEDIR}${ETCDIR}/unicode.mapping
 
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	(cd ${WRKSRC} && ${COPYTREE_SHARE} "doc" ${STAGEDIR}${DOCSDIR})
-	${INSTALL_DATA} ${WRKDIR}/README ${STAGEDIR}${DOCSDIR}/
+	(cd ${WRKSRC} && ${COPYTREE_SHARE} doc ${STAGEDIR}${DOCSDIR})
+	${INSTALL_DATA} ${WRKDIR}/README ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>
