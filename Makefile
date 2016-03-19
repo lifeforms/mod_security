@@ -1,7 +1,7 @@
 # $FreeBSD: head/www/mod_security/Makefile 394508 2015-08-17 14:20:40Z mat $
 
 PORTNAME=	mod_security
-PORTVERSION=	2.9.0
+PORTVERSION=	2.9.1
 CATEGORIES=	www security
 MASTER_SITES=	http://www.modsecurity.org/tarball/${PORTVERSION}/
 PKGNAMEPREFIX=	${APACHE_PKGNAMEPREFIX}
