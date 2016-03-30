@@ -2,6 +2,7 @@
 You have installed ModSecurity.
 To enable ModSecurity in Apache, add the following to your httpd.conf:
 
+  LoadModule unique_id_module %%APACHEMODDIR%%/mod_unique_id.so
   LoadModule security2_module %%APACHEMODDIR%%/mod_security2.so
   Include etc/modsecurity/*.conf
 
