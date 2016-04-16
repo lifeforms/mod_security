@@ -11,7 +11,7 @@
 ##  mod_unique_id (in httpd.conf) and
 ##  mod_security2 in this config file
 ##
-##  Additional load the rules with an Include line from
+## Additionally, load configuration and rules with an Include line from
 ##  %%ETCDIR%%/*.conf
 ##
 ## Most users will use the signatures from the OWASP Core Rule Set (CRS).

@@ -1,14 +1,14 @@
 Configuring ModSecurity on FreeBSD
 ----------------------------------
 
-To enable ModSecurity in Apache, add the following to your httpd.conf:
+To enable ModSecurity in Apache, follow the instructions in
 
-  LoadModule unique_id_module %%APACHEMODDIR%%/mod_unique_id.so
-  LoadModule security2_module %%APACHEMODDIR%%/mod_security2.so
-  Include %%ETCDIR%%/*.conf
+ %%PREFIX%%/%%APACHEETCDIR%%/modules.d/%%APMOD_FILE%%
 
 ModSecurity has various configuration options.
-To change them, edit modsecurity/modsecurity.conf.
+To change them, edit the following file:
+
+ %%ETCDIR%%/modsecurity.conf
 
 Getting the Core Rule Set
 -------------------------
