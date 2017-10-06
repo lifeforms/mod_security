@@ -17,10 +17,10 @@ LIB_DEPENDS+=	libpcre.so:devel/pcre \
 		libyajl.so:devel/yajl \
 		libcurl.so:ftp/curl
 
+USES=		perl5 pkgconfig shebangfix
 USE_APACHE=	22+
 USE_GNOME=	libxml2
 GNU_CONFIGURE=	yes
-USES=		perl5 pkgconfig shebangfix
 SHEBANG_FILES=	tools/rules-updater.pl.in mlogc/mlogc-batch-load.pl.in
 perl_OLD_CMD=	@PERL@
 
