@@ -15,9 +15,11 @@ LICENSE=	APACHE20
 LIB_DEPENDS+=	libpcre.so:devel/pcre \
 		libapr-1.so:devel/apr1 \
 		libyajl.so:devel/yajl \
-		libcurl.so:ftp/curl
+		libcurl.so:ftp/curl \
+		libgdbm.so:databases/gdbm \
+		libexpat.so:textproc/expat2
 
-USES=		perl5 pkgconfig shebangfix
+USES=		perl5 pkgconfig shebangfix bdb
 USE_APACHE=	22+
 USE_GNOME=	libxml2
 GNU_CONFIGURE=	yes
